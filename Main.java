@@ -3,7 +3,8 @@ public class Main {
         System.out.println("Velkommen til Delfinen, vælg hvad du vil gøre ud fra de valgmuligheder i menuen");
         MedlemsListe MedlemListe = new MedlemsListe();
         
-        System.out.println("Menu:
+        System.out.println("Menu:\n
+                           1. Opret bruger");
                           
     }
 }
