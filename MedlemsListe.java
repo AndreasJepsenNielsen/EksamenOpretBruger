@@ -22,7 +22,7 @@ public class MedlemsListe {
                 )
         );
 
-        System.out.println("Bruger oprettet!");
+        System.out.println("Bruger oprettet!\n");
     }
 
     //METHODS
