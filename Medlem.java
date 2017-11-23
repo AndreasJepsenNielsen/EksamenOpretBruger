@@ -73,11 +73,12 @@ public class Medlem
 */
     @Override
     public String toString() {
-        return "Navn: " + navn +
+        return "\nNavn: " + navn +
                 "\nTelefonNummer: " + telefonNummer +
                 "\nAdresse: " + adresse +
                 "\nEmail: " + email +
-                "\nAlder: " + alder;
+                "\nAlder: " + alder +
+                "\n";
                 //"\nKontingenttype: " + kontingentType;
     }
 
