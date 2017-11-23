@@ -51,8 +51,15 @@ public class MedlemsListe {
         return input.nextLine();
     }
 
+
     @Override
     public String toString() {
-        return "" + medlemsListe;
+        String result = "";
+        for (int i = 0; i < this.medlemsListe.size(); i++) {
+            result += this.medlemsListe.get(i);
+        }
+        return result;
     }
+
+
 }
