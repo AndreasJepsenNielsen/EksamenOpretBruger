@@ -18,7 +18,8 @@ public class Main
         while(true)
         {
             System.out.println("Menu:\n" +
-                "1. Opret bruger");
+                "1. Opret bruger\n" +
+                    "2. Vis brugere");
 
             String choice = input.next();
 
