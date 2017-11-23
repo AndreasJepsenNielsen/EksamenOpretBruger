@@ -21,6 +21,8 @@ public class MedlemsListe {
                     indtastAlder()
                 )
         );
+
+        System.out.println("Bruger oprettet!");
     }
 
     //METHODS
@@ -49,10 +51,8 @@ public class MedlemsListe {
         return input.nextLine();
     }
 
-
-
-    public ArrayList<Medlem> getMedlemsListe() {
-        return medlemsListe;
+    @Override
+    public String toString() {
+        return "" + medlemsListe;
     }
-
 }
