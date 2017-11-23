@@ -17,7 +17,7 @@ public class Main
 
         while(true)
         {
-            System.out.println("Menu:\n " +
+            System.out.println("Menu:\n" +
                 "1. Opret bruger");
 
             String choice = input.next();
@@ -28,8 +28,7 @@ public class Main
                     medlemsListe.opretBruger();
                     break;
                 case "2":
-                    System.out.println(medlemsListe.getMedlemsListe().get(0));
-                    System.out.println(medlemsListe.getMedlemsListe().get(1));
+                    System.out.println(medlemsListe);
                     break;
                 default:
                     break;
