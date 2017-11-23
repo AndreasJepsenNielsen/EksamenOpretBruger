@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Medlem
 {
+    //Fields
     private String navn;
     private int telefonNummer;
     private String adresse;
@@ -10,8 +11,7 @@ public class Medlem
     private int alder;
     private KontingentType kontingentType;
 
-
-
+    //Constructor
     public Medlem() {
         Scanner input = new Scanner(System.in);
 
@@ -24,11 +24,13 @@ public class Medlem
 
 
         while (true) {
-
+            //Fjern continue, Tjek try catch muligvis incapsulate i en try catch?? flyt alt koden i Medlemsliste constructor er for stor.
+            //Husk kommentarer til alt, ingen temp variabler vi skal kunne gøre det uden, find en måde.
             if (this.getNavn() == null)
             {
                 System.out.println("Navn");
                 tempNavn = input.nextLine();
+                // Use of regex found it here: ,
                 if (tempNavn.matches(".*\\d+.*")) {
                     System.out.println("Navn kan ikke indeholde tal");
                     tempNavn = null;
@@ -87,7 +89,7 @@ public class Medlem
                 try
                 {
                     tempAlder = input.nextInt();
-                    input.nextLine();
+                    input.nextLine(); // End the nextInt with nextLine
 
                     if (tempAlder >= 0)
                     {
@@ -187,3 +189,4 @@ public class Medlem
         this.kontingentType = kontingentType;
     }
 }
+
