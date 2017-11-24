@@ -9,18 +9,20 @@ public class Medlem
     private String adresse;
     private String email;
     private String alder;
-    //private KontingentType kontingentType;
+    private SvømmeDiscipliner svømmeDiscipliner;
+    private KontingentType kontingentType;
 
     public Medlem() {
     }
 
-    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder) {
+    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,SvømmeDiscipliner svømmeDiscipliner,KontingentType kontingentType) {
         this.navn = navn;
         this.telefonNummer = telefonNummer;
         this.adresse = adresse;
         this.email = email;
         this.alder = alder;
-        //this.kontingentType = kontingentType;
+        this.svømmeDiscipliner = svømmeDiscipliner;
+        this.kontingentType = kontingentType;
     }
 
     public String getNavn() {
@@ -67,10 +69,14 @@ public class Medlem
         this.alder = alder;
     }
 
-   /* public void setKontingentType(KontingentType kontingentType) {
+    public void setKontingentType(KontingentType kontingentType) {
         this.kontingentType = kontingentType;
     }
-*/
+
+    public void setSvømmeDiscipliner(SvømmeDiscipliner svømmeDiscipliner) {
+        this.svømmeDiscipliner = svømmeDiscipliner;
+    }
+
     @Override
     public String toString() {
         return "\nNavn: " + navn +
@@ -78,8 +84,10 @@ public class Medlem
                 "\nAdresse: " + adresse +
                 "\nEmail: " + email +
                 "\nAlder: " + alder +
+                "\nSvømmedisciplin: " + svømmeDiscipliner +
+                "\nKontingenttype: " + kontingentType +
                 "\n";
-                //"\nKontingenttype: " + kontingentType;
+
     }
 
 }
