@@ -20,11 +20,30 @@ public class MedlemsListe {
                     indtastEmail(),
                     indtastAlder(),
                     indtastSvømmeDisciplin(),
-                    indtastKontingentType()
+                    indtastKontingentType(),
+                    erKonkurrenceSvømmer()
                 )
         );
 
         System.out.println("Bruger oprettet!\n");
+    }
+
+    private Boolean erKonkurrenceSvømmer()
+    {
+        System.out.println("Er det nye medlem en konkurrencesvømmer?");
+        System.out.println("J/N");
+        if (input.nextLine().equalsIgnoreCase("J"))
+        {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public void tilføjBruger(Medlem medlem)
+    {
+        this.medlemsListe.add(medlem);
     }
 
     //METHODS
@@ -63,13 +82,15 @@ public class MedlemsListe {
         return KontingentType.valueOf(input.nextLine().toUpperCase());
     }
 
+
+
     public Medlem findBruger(){
         System.out.println("Indtast navn, adresse eller telefonnumer");
         String choice = input.nextLine();
-        for(Medlem hej : medlemsListe)
+        for(Medlem find : medlemsListe)
         {
-            if(choice.equalsIgnoreCase(hej.getNavn()) || choice.equalsIgnoreCase(hej.getAdresse()) || choice.equalsIgnoreCase(hej.getTelefonNummer())){
-                return  hej;
+            if(choice.equalsIgnoreCase(find.getNavn()) || choice.equalsIgnoreCase(find.getAdresse()) || choice.equalsIgnoreCase(find.getTelefonNummer())){
+                return  find;
             }
         }
        return null;
@@ -112,12 +133,13 @@ public class MedlemsListe {
             case "6":
                 System.out.println("Indtast ny svømmedisciplin: ");
                 bruger.setSvømmeDiscipliner(SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase()));
+                break;
             case "7":
                 System.out.println("Indtast ny kontingenttype: ");
                 bruger.setKontingentType(KontingentType.valueOf(input.nextLine().toUpperCase()));
                 break;
-                default:
-                    break;
+            default:
+                break;
 
         }
         System.out.println("Informationen er ændret\n");
@@ -125,15 +147,16 @@ public class MedlemsListe {
 
     public void sletBruger(){
         Medlem bruger = findBruger();
-        System.out.println("Er du sikker på at du vil slette brugeren: "+ bruger.getNavn() + " ? Y/N");
+        System.out.println("Er du sikker på at du vil slette brugeren: "+ bruger.getNavn() + " ? J/N");
         String choice = input.nextLine();
 
-        if(choice.equalsIgnoreCase("Y")) //Denne har vi fundet på oracle (equalsIgnoreCase). Link: https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
+        if(choice.equalsIgnoreCase("J")) //Denne har vi fundet på oracle (equalsIgnoreCase). Link: https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
         {
             medlemsListe.remove(bruger);
             System.out.println("Bruger slettet");
         }
     }
+
 
     @Override
     public String toString() {

@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Medlem
 {
     //Fields
@@ -11,11 +8,12 @@ public class Medlem
     private String alder;
     private SvømmeDiscipliner svømmeDiscipliner;
     private KontingentType kontingentType;
+    private boolean erKonkurrenceSvømmer;
 
     public Medlem() {
     }
 
-    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,SvømmeDiscipliner svømmeDiscipliner,KontingentType kontingentType) {
+    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,SvømmeDiscipliner svømmeDiscipliner,KontingentType kontingentType, Boolean isKonkurrenceSvømmer) {
         this.navn = navn;
         this.telefonNummer = telefonNummer;
         this.adresse = adresse;
@@ -23,6 +21,7 @@ public class Medlem
         this.alder = alder;
         this.svømmeDiscipliner = svømmeDiscipliner;
         this.kontingentType = kontingentType;
+        this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
     }
 
     public String getNavn() {
@@ -86,6 +85,7 @@ public class Medlem
                 "\nAlder: " + alder +
                 "\nSvømmedisciplin: " + svømmeDiscipliner +
                 "\nKontingenttype: " + kontingentType +
+                "\nKonkurrencesvømmer: " + erKonkurrenceSvømmer +
                 "\n";
 
     }
