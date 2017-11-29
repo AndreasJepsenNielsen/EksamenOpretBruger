@@ -8,6 +8,7 @@ public class Main
         Scanner input = new Scanner(System.in);
 
 
+
         MedlemsListe medlemsListe = new MedlemsListe();
 
         System.out.println("Velkommen til Delfinen, vælg hvad du vil gøre ud fra de valgmuligheder i menuen");

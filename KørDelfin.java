@@ -3,19 +3,14 @@ import java.util.Scanner;
 public class KørDelfin
 {
     static Scanner input = new Scanner(System.in);
-
-
     static HoldListe holdListe = new HoldListe();
 
-    public static Medlem medlem = new Medlem("Jens", "75849384", "Nyvej", "wer@gorkei.com",
-            "25", SvømmeDiscipliner.CRAWL, KontingentType.PASSIV, true);
 
 
 
     public static void main(String[] args)
     {
 
-        holdListe.medlemsListe.tilføjBruger(medlem);
         menu();
 
     }

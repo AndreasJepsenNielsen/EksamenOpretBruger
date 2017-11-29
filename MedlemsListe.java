@@ -5,9 +5,28 @@ public class MedlemsListe {
     private ArrayList<Medlem> medlemsListe;
     private Scanner input = new Scanner(System.in);
 
-    public MedlemsListe() {
-        this.medlemsListe = new ArrayList<>();
+    public MedlemsListe()
+    {
+        this.medlemsListe = readFile();
+
+
+
+
+
     }
+
+    public ArrayList<Medlem> readFile()
+    {
+        ArrayList<Medlem> medlemmer = new ArrayList<>();
+
+        ReadFile readFile = new ReadFile();
+        readFile.openFile();
+        medlemmer = readFile.readFile();
+        readFile.closeFile();
+
+        return medlemmer;
+    }
+
 
 
     public void opretBruger() {

@@ -24,6 +24,22 @@ public class Medlem
         this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
     }
 
+    public SvømmeDiscipliner getSvømmeDiscipliner() {
+        return svømmeDiscipliner;
+    }
+
+    public KontingentType getKontingentType() {
+        return kontingentType;
+    }
+
+    public boolean isErKonkurrenceSvømmer() {
+        return erKonkurrenceSvømmer;
+    }
+
+    public void setErKonkurrenceSvømmer(boolean erKonkurrenceSvømmer) {
+        this.erKonkurrenceSvømmer = erKonkurrenceSvømmer;
+    }
+
     public String getNavn() {
         return navn;
     }
@@ -78,14 +94,14 @@ public class Medlem
 
     @Override
     public String toString() {
-        return "\nNavn: " + navn +
-                "\nTelefonNummer: " + telefonNummer +
-                "\nAdresse: " + adresse +
-                "\nEmail: " + email +
-                "\nAlder: " + alder +
-                "\nSvømmedisciplin: " + svømmeDiscipliner +
-                "\nKontingenttype: " + kontingentType +
-                "\nKonkurrencesvømmer: " + erKonkurrenceSvømmer +
+        return "\nNavn: " + navn + " " +
+                "\nTelefonNummer: " + telefonNummer + " " +
+                "\nAdresse: " + adresse + " " +
+                "\nEmail: " + email + " " +
+                "\nAlder: " + alder + " " +
+                "\nSvømmedisciplin: " + svømmeDiscipliner + " " +
+                "\nKontingenttype: " + kontingentType + " " +
+                "\nKonkurrencesvømmer: " + erKonkurrenceSvømmer + " " +
                 "\n";
 
     }
