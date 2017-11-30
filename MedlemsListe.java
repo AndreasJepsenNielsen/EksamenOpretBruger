@@ -5,8 +5,6 @@ import java.util.Scanner;
 public class MedlemsListe implements Serializable{
     private ArrayList<Medlem> medlemsListe;
     private static Scanner input = new Scanner(System.in);
-    private CreateFile x;
-    private ReadFile y;
 
     public MedlemsListe()
 

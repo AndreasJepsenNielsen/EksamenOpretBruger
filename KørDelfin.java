@@ -16,6 +16,19 @@ public class KørDelfin
 
     public static void menu()
     {
+        /* et lille forsøg på at sørge for at den laver en fil første gang
+        try {
+            File file = new File("medlemmer.txt");
+            file.createNewFile();
+
+        }
+        catch (IOException eIOE)
+        {
+            eIOE.printStackTrace();
+        }
+        */
+
+
         holdListe.setMedlemsListe(readFile());
 
         System.out.println("Velkommen til Delfinen, vælg hvad du vil gøre ud fra de valgmuligheder i menuen");

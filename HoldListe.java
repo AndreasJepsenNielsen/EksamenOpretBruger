@@ -9,7 +9,7 @@ public class HoldListe
     MedlemsListe medlemsListe;
 
 
-    ReadFile readFile = new ReadFile();
+   
 
 
     public MedlemsListe getMedlemsListe() {
