@@ -1,38 +1,26 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MedlemsListe {
+public class MedlemsListe implements Serializable{
     private ArrayList<Medlem> medlemsListe;
-    private Scanner input = new Scanner(System.in);
+    private static Scanner input = new Scanner(System.in);
+    private CreateFile x;
+    private ReadFile y;
 
     public MedlemsListe()
+
     {
-        this.medlemsListe = readFile();
-
-
-
-
+        this.medlemsListe = new ArrayList<>();
 
     }
-
-    public ArrayList<Medlem> readFile()
-    {
-        ArrayList<Medlem> medlemmer = new ArrayList<>();
-
-        ReadFile readFile = new ReadFile();
-        readFile.openFile();
-        medlemmer = readFile.readFile();
-        readFile.closeFile();
-
-        return medlemmer;
-    }
-
-
 
     public void opretBruger() {
         //Husk kommentarer til alt
-        this.medlemsListe.add(
-                new Medlem(
+        Medlem medlem =
+
+                new Medlem
+                (
                     indtastNavn(),
                     indtastTelefonnummer(),
                     indtastAdresse(),
@@ -41,8 +29,9 @@ public class MedlemsListe {
                     indtastSvømmeDisciplin(),
                     indtastKontingentType(),
                     erKonkurrenceSvømmer()
-                )
-        );
+                );
+
+                this.medlemsListe.add(medlem);
 
         System.out.println("Bruger oprettet!\n");
     }

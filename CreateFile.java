@@ -1,26 +1,34 @@
-import java.util.Formatter;
+/*
+import java.io.*;
+
 
 public class CreateFile {
-    private Formatter x;
 
-    public void openFile() {
-        try {
-            x = new Formatter("chinese.txt");
-        }
-        catch (Exception eFNFE){
-            System.out.println("Error");
-        }
-    }
-
-
-
-    public void addPerson(String medlem)
+    public void createStream(MedlemsListe medlemmer)
     {
-        x.format("%s%n", medlem);
-    }
+        try
+        {
+            File file = new File("medlemmer.txt");
 
-    public void closeFile()
-    {
-        x.close();
+            FileOutputStream fos = new FileOutputStream(file);
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+            ObjectOutputStream thwwizardofuss = new ObjectOutputStream(bos);
+
+            thwwizardofuss.writeObject(medlemmer);
+
+            thwwizardofuss.close();
+        }
+        catch(FileNotFoundException eFNFE)
+        {
+
+            System.out.println("Error eFNFE");
+            eFNFE.printStackTrace();
+        }
+        catch (IOException eIOE)
+        {
+            System.out.println("Error eIOE");
+            eIOE.printStackTrace();
+        }
     }
 }
+*/

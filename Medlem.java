@@ -1,4 +1,6 @@
-public class Medlem
+import java.io.Serializable;
+
+public class Medlem implements Serializable
 {
     //Fields
     private String navn;

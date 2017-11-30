@@ -1,56 +1,34 @@
-import java.io.File;
+/*
+
+import com.sun.rmi.rmid.ExecPermission;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadFile
 {
-    private Scanner x;
-
-    public void openFile()
+    public MedlemsListe readFile()
     {
-        try{
-            x = new Scanner(new File("chinese.txt"));
+        MedlemsListe medlemsListe = new MedlemsListe();
+        try {
+
+
+            File file = new File("medlemmer.txt");
+
+            FileInputStream fis = new FileInputStream(file);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+
+            medlemsListe = (MedlemsListe) ois.readObject();
+
+            ois.close();
         }
-        catch (Exception eFNFE)
+        catch (Exception e)
         {
-            System.out.println("Error");
+            e.printStackTrace();
         }
-    }
-
-    public ArrayList<Medlem> readFile()
-    {
-        ArrayList<Medlem> medlemmer = new ArrayList<>();
-
-        while (x.hasNext())
-        {
-            Medlem medlem = new Medlem();
-
-            x.next();
-            medlem.setNavn(x.next());
-            x.next();
-            medlem.setTelefonNummer(x.next());
-            x.next();
-            medlem.setAdresse(x.next());
-            x.next();
-            medlem.setEmail(x.next());
-            x.next();
-            medlem.setAlder(x.next());
-            x.next();
-            medlem.setSvømmeDiscipliner(SvømmeDiscipliner.valueOf(x.next().toUpperCase()));
-            x.next();
-            medlem.setKontingentType(KontingentType.valueOf(x.next().toUpperCase()));
-            x.next();
-            medlem.setErKonkurrenceSvømmer(x.next().equals("true"));
-
-            medlemmer.add(medlem);
-
-
-        }
-        return medlemmer;
-    }
-
-    public void closeFile()
-    {
-        x.close();
+        return medlemsListe;
     }
 }
+*/

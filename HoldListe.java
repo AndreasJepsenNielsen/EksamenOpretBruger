@@ -2,14 +2,25 @@ import java.util.Scanner;
 
 public class HoldListe
 {
-    static Hold rød = new Hold("rød");
-    static Hold blå = new Hold("blå");
 
     static Scanner input = new Scanner(System.in);
+    Hold rød = new Hold("rød");
+    Hold blå = new Hold("blå");
+    MedlemsListe medlemsListe;
 
-    public static MedlemsListe medlemsListe = new MedlemsListe();
 
-    public static void redigerHold()
+    ReadFile readFile = new ReadFile();
+
+
+    public MedlemsListe getMedlemsListe() {
+        return medlemsListe;
+    }
+
+    public void setMedlemsListe(MedlemsListe medlemsListe) {
+        this.medlemsListe = medlemsListe;
+    }
+
+    public void redigerHold()
     {
         System.out.println("Hold rød eller hold blå?");
 
