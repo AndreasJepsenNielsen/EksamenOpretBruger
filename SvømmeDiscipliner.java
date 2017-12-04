@@ -1,5 +1,5 @@
 import java.io.Serializable;
 
 public enum SvømmeDiscipliner implements Serializable {
-    BUTTERFLY, CRAWL, RYGCRAWL, BRYSTSVØMNING, HUNDESVØMNING;
+    BUTTERFLY, CRAWL, RYGCRAWL, BRYSTSVØMNING, HUNDESVØMNING
 }

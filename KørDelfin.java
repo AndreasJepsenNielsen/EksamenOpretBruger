@@ -41,9 +41,11 @@ public class KørDelfin
                     "2. Vis medlemmer\n" +
                     "3. Rediger medlem\n" +
                     "4. Slet medlem\n" +
-                    "5. Rediger hold\n"+
-                    "6. Vis hold\n"+
-                    "7. Luk og gem"
+                    "5. Rediger hold\n" +
+                    "6. Vis hold\n" +
+                    "7. Vis Rangliste\n" +
+                    "8. Tilføj Resultat\n" +
+                    "9. Luk og gem"
             );
 
             String choice = input.next();
@@ -68,6 +70,12 @@ public class KørDelfin
                 case "6":
                     holdListe.visHold();
                     break;
+                case "7":
+                    holdListe.medlemsListe.visRangliste();
+                    break;
+                case "8":
+                    holdListe.medlemsListe.findMedlem().getResultatListe().tilføjResultat();
+                    break;
                 default:
                     createStream(holdListe.medlemsListe);
                     createStream2(holdListe);
@@ -76,6 +84,8 @@ public class KørDelfin
             }
         }
     }
+
+
 
     public static void createStream(MedlemsListe medlemmer)
     {

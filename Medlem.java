@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Medlem implements Serializable
 {
@@ -8,25 +9,29 @@ public class Medlem implements Serializable
     private String adresse;
     private String email;
     private String alder;
-    private SvømmeDiscipliner svømmeDiscipliner;
+    private ArrayList<SvømmeDiscipliner> svømmeDiscipliner;
     private KontingentType kontingentType;
+    private ResultatListe resultatListe;
     //private boolean erKonkurrenceSvømmer;
 
-    public Medlem() {
+    public Medlem()
+    {
+
     }
 
-    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,SvømmeDiscipliner svømmeDiscipliner,KontingentType kontingentType /*, Boolean isKonkurrenceSvømmer*/) {
+    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,KontingentType kontingentType /*, Boolean isKonkurrenceSvømmer*/) {
         this.navn = navn;
         this.telefonNummer = telefonNummer;
         this.adresse = adresse;
         this.email = email;
         this.alder = alder;
-        this.svømmeDiscipliner = svømmeDiscipliner;
+        this.svømmeDiscipliner = new ArrayList<>();
         this.kontingentType = kontingentType;
+        this.resultatListe = new ResultatListe();
         //this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
     }
 
-    public SvømmeDiscipliner getSvømmeDiscipliner() {
+    public ArrayList<SvømmeDiscipliner> getSvømmeDiscipliner() {
         return svømmeDiscipliner;
     }
 
@@ -91,8 +96,12 @@ public class Medlem implements Serializable
         this.kontingentType = kontingentType;
     }
 
-    public void setSvømmeDiscipliner(SvømmeDiscipliner svømmeDiscipliner) {
+    public void setSvømmeDiscipliner(ArrayList svømmeDiscipliner) {
         this.svømmeDiscipliner = svømmeDiscipliner;
+    }
+
+    public ResultatListe getResultatListe() {
+        return resultatListe;
     }
 
     @Override
@@ -109,4 +118,23 @@ public class Medlem implements Serializable
 
     }
 
+    public void tilføjSvømmeDisciplin(SvømmeDiscipliner svømmeDiscipliner)
+    {
+        this.svømmeDiscipliner.add(svømmeDiscipliner);
+    }
+
+    public void sletSvømmeDisciplin (SvømmeDiscipliner svømmeDiscipliner)
+    {
+        int index = 0;
+
+        for (SvømmeDiscipliner svømmeDiscipliner1 : this.svømmeDiscipliner)
+        {
+            if (svømmeDiscipliner == svømmeDiscipliner1)
+            {
+                break;
+            }
+            index++;
+        }
+        this.svømmeDiscipliner.remove(index);
+    }
 }

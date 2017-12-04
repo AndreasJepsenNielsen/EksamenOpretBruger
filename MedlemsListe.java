@@ -1,5 +1,8 @@
+import javax.xml.transform.Result;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class MedlemsListe implements Serializable{
@@ -24,10 +27,9 @@ public class MedlemsListe implements Serializable{
                                     indtastAdresse(),
                                     indtastEmail(),
                                     indtastAlder(),
-                                    indtastSvømmeDisciplin(),
                                     indtastKontingentType()
                             );
-
+            konkurrenceSvømmer.getSvømmeDiscipliner().add(indtastSvømmeDisciplin());
             this.medlemsListe.add(konkurrenceSvømmer);
 
         } else {
@@ -40,10 +42,10 @@ public class MedlemsListe implements Serializable{
                                     indtastAdresse(),
                                     indtastEmail(),
                                     indtastAlder(),
-                                    indtastSvømmeDisciplin(),
                                     indtastKontingentType()
                                     //erKonkurrenceSvømmer()
                             );
+            medlem.getSvømmeDiscipliner().add(indtastSvømmeDisciplin());
 
             this.medlemsListe.add(medlem);
         }
@@ -55,12 +57,7 @@ public class MedlemsListe implements Serializable{
     {
         System.out.println("Er det nye medlem en konkurrencesvømmer?");
         System.out.println("J/N");
-        if (input.nextLine().equalsIgnoreCase("J"))
-        {
-            return true;
-        } else {
-            return false;
-        }
+        return input.nextLine().equalsIgnoreCase("J");
 
     }
 
@@ -97,6 +94,7 @@ public class MedlemsListe implements Serializable{
 
     public SvømmeDiscipliner indtastSvømmeDisciplin() {
         System.out.println("Svømmedisciplin");
+
         return SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase());
     }
 
@@ -104,8 +102,6 @@ public class MedlemsListe implements Serializable{
         System.out.println("KontingentType: ");
         return KontingentType.valueOf(input.nextLine().toUpperCase());
     }
-
-
 
     public Medlem findMedlem(){
         System.out.println("Indtast navn, adresse eller telefonnumer");
@@ -156,7 +152,8 @@ public class MedlemsListe implements Serializable{
                 break;
             case "6":
                 System.out.println("Indtast ny svømmedisciplin: ");
-                medlem.setSvømmeDiscipliner(SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase()));
+
+                redigerSvømmedisciplin(medlem);
                 break;
             case "7":
                 System.out.println("Indtast ny kontingenttype: ");
@@ -167,6 +164,30 @@ public class MedlemsListe implements Serializable{
 
         }
         System.out.println("Informationen er ændret\n");
+    }
+
+    private void redigerSvømmedisciplin(Medlem medlem)
+    {
+        System.out.println("1. Tilføj\n" +
+                "2. Slet\n" +
+                "3. Tilbage");
+
+        String choice = input.nextLine();
+
+        switch (choice)
+        {
+            case "1":
+                System.out.println("Indtast svømmedisciplin");
+                medlem.tilføjSvømmeDisciplin(SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase()));
+                System.out.println("Svømmedisciplin tilføjet til medlem");
+                break;
+            case "2":
+                System.out.println("Indtast svømmedisciplin");
+                medlem.sletSvømmeDisciplin(SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase()));
+                break;
+            default:
+                break;
+        }
     }
 
     public void sletMedlem(){
@@ -181,6 +202,49 @@ public class MedlemsListe implements Serializable{
         }
     }
 
+    public void visRangliste()
+    {
+        ArrayList<Resultat> rangListe = new ArrayList<>();
+        SvømmeDiscipliner svømmeDiscipliner;
+
+        System.out.println("Indtast disciplin");
+        svømmeDiscipliner = SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase());
+
+        for (Medlem medlem : this.medlemsListe)
+        {
+            rangListe.add(findBedsteTid(medlem, svømmeDiscipliner));
+        }
+
+        rangListe.sort(ResultatListe::compare);
+
+        for (int i = 0; i < 5; i++)
+        {
+            System.out.println(rangListe.get(i));
+        }
+    }
+
+    private Resultat findBedsteTid (Medlem medlem, SvømmeDiscipliner svømmeDiscipliner)
+    {
+        ArrayList<Resultat> resultatArrayList = new ArrayList<>();
+
+        for (Resultat resultat : medlem.getResultatListe().resultatListe)
+        {
+            if (resultat.getSvømmeDiscipliner() == svømmeDiscipliner)
+            {
+                resultatArrayList.add(resultat);
+            }
+        }
+
+        resultatArrayList.add(Collections.min(medlem.getResultatListe().resultatListe));
+        resultatArrayList.sort(Resultat::compareTo);
+
+        return resultatArrayList.get(0);
+    }
+
+    public ArrayList<Medlem> getMedlemsListe()
+    {
+        return medlemsListe;
+    }
 
     @Override
     public String toString() {
