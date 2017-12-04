@@ -16,30 +16,30 @@ public class Hold {
     public void redigerHold(MedlemsListe medlemsListe)
     {
         System.out.println("1. Tilføj medlem\n" +
-                            "2. Slet bruger\n" +
+                            "2. Slet medlem\n" +
                             "3. Tilbage");
         String choice = input.nextLine();
         switch (choice)
         {
             case "1":
-                tilføjMedlem(medlemsListe.findBruger());
+                tilføjKonkurrenceSvømmer(medlemsListe.findMedlem());
                 break;
             case "2":
-                fjernMedlem(medlemsListe.findBruger());
+                fjernKonkurrenceSvømmer(medlemsListe.findMedlem());
                 break;
             default:
                 break;
         }
     }
 
-    public void tilføjMedlem(Medlem medlem)
+    public void tilføjKonkurrenceSvømmer(Medlem medlem)
     {
         this.holdListe.add(medlem);
         System.out.println(medlem.getNavn() + " er blevet tilmeldt hold " + this.holdNavn);
     }
 
 
-    public void fjernMedlem(Medlem medlem)
+    public void fjernKonkurrenceSvømmer(Medlem medlem)
     {
         this.holdListe.remove(medlem);
         System.out.println(medlem.getNavn() + " er nu fjernet fra hold" + this.holdNavn);

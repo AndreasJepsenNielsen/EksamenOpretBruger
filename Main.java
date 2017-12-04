@@ -29,16 +29,16 @@ public class Main
             switch (choice)
             {
                 case "1":
-                    medlemsListe.opretBruger();
+                    medlemsListe.opretMedlem();
                     break;
                 case "2":
                     System.out.println(medlemsListe);
                     break;
                 case "3":
-                    medlemsListe.redigerBruger();
+                    medlemsListe.redigerMedlem();
                     break;
                 case "4":
-                    medlemsListe.sletBruger();
+                    medlemsListe.sletMedlem();
                     break;
                 default:
                     System.exit(0);

@@ -36,10 +36,10 @@ public class KørDelfin
         while(true)
         {
             System.out.println("Menu:\n" +
-                    "1. Opret bruger\n" +
-                    "2. Vis brugere\n" +
-                    "3. Rediger bruger\n" +
-                    "4. Slet bruger\n" +
+                    "1. Opret medlem\n" +
+                    "2. Vis medlemmer\n" +
+                    "3. Rediger medlem\n" +
+                    "4. Slet medlem\n" +
                     "5. Rediger hold\n"+
                     "6. Vis hold\n"+
                     "7. Luk og gem"
@@ -50,16 +50,16 @@ public class KørDelfin
             switch (choice)
             {
                 case "1":
-                    holdListe.medlemsListe.opretBruger();
+                    holdListe.medlemsListe.opretMedlem();
                     break;
                 case "2":
                     System.out.println(holdListe.medlemsListe);
                     break;
                 case "3":
-                    holdListe.medlemsListe.redigerBruger();
+                    holdListe.medlemsListe.redigerMedlem();
                     break;
                 case "4":
-                    holdListe.medlemsListe.sletBruger();
+                    holdListe.medlemsListe.sletMedlem();
                     break;
                 case "5":
                     holdListe.redigerHold();
@@ -81,6 +81,7 @@ public class KørDelfin
         {
             File file = new File("medlemmer.txt");
 
+
             FileOutputStream fos = new FileOutputStream(file);
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             ObjectOutputStream oos = new ObjectOutputStream(bos);
@@ -93,12 +94,12 @@ public class KørDelfin
         {
 
             System.out.println("Error eFNFE");
-            eFNFE.printStackTrace();
+            //eFNFE.printStackTrace();
         }
         catch (IOException eIOE)
         {
             System.out.println("Error eIOE");
-            eIOE.printStackTrace();
+            //eIOE.printStackTrace();
         }
     }
 
@@ -120,7 +121,7 @@ public class KørDelfin
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return medlemsListe;
     }

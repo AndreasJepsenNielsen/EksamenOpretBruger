@@ -10,12 +10,12 @@ public class Medlem implements Serializable
     private String alder;
     private SvømmeDiscipliner svømmeDiscipliner;
     private KontingentType kontingentType;
-    private boolean erKonkurrenceSvømmer;
+    //private boolean erKonkurrenceSvømmer;
 
     public Medlem() {
     }
 
-    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,SvømmeDiscipliner svømmeDiscipliner,KontingentType kontingentType, Boolean isKonkurrenceSvømmer) {
+    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,SvømmeDiscipliner svømmeDiscipliner,KontingentType kontingentType /*, Boolean isKonkurrenceSvømmer*/) {
         this.navn = navn;
         this.telefonNummer = telefonNummer;
         this.adresse = adresse;
@@ -23,7 +23,7 @@ public class Medlem implements Serializable
         this.alder = alder;
         this.svømmeDiscipliner = svømmeDiscipliner;
         this.kontingentType = kontingentType;
-        this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
+        //this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
     }
 
     public SvømmeDiscipliner getSvømmeDiscipliner() {
@@ -34,13 +34,14 @@ public class Medlem implements Serializable
         return kontingentType;
     }
 
-    public boolean isErKonkurrenceSvømmer() {
+    /*public boolean isErKonkurrenceSvømmer() {
         return erKonkurrenceSvømmer;
     }
 
-    public void setErKonkurrenceSvømmer(boolean erKonkurrenceSvømmer) {
+    //public void setErKonkurrenceSvømmer(boolean erKonkurrenceSvømmer) {
         this.erKonkurrenceSvømmer = erKonkurrenceSvømmer;
     }
+    */
 
     public String getNavn() {
         return navn;
@@ -103,7 +104,7 @@ public class Medlem implements Serializable
                 "\nAlder: " + alder + " " +
                 "\nSvømmedisciplin: " + svømmeDiscipliner + " " +
                 "\nKontingenttype: " + kontingentType + " " +
-                "\nKonkurrencesvømmer: " + erKonkurrenceSvømmer + " " +
+                //"\nKonkurrencesvømmer: " + erKonkurrenceSvømmer + " " +
                 "\n";
 
     }

@@ -9,12 +9,7 @@ public class HoldListe
     MedlemsListe medlemsListe;
 
 
-   
 
-
-    public MedlemsListe getMedlemsListe() {
-        return medlemsListe;
-    }
 
     public void setMedlemsListe(MedlemsListe medlemsListe) {
         this.medlemsListe = medlemsListe;
@@ -28,10 +23,12 @@ public class HoldListe
 
         if (choice2.equalsIgnoreCase("rød"))
         {
+            System.out.println("Hold rød er valgt");
             rød.redigerHold(medlemsListe);
         }
         else if (choice2.equalsIgnoreCase("blå"))
         {
+            System.out.println("Hold blå er valgt");
             blå.redigerHold(medlemsListe);
         }
     }

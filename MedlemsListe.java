@@ -7,31 +7,48 @@ public class MedlemsListe implements Serializable{
     private static Scanner input = new Scanner(System.in);
 
     public MedlemsListe()
-
     {
         this.medlemsListe = new ArrayList<>();
-
     }
 
-    public void opretBruger() {
+    public void opretMedlem() {
         //Husk kommentarer til alt
-        Medlem medlem =
 
-                new Medlem
-                (
-                    indtastNavn(),
-                    indtastTelefonnummer(),
-                    indtastAdresse(),
-                    indtastEmail(),
-                    indtastAlder(),
-                    indtastSvømmeDisciplin(),
-                    indtastKontingentType(),
-                    erKonkurrenceSvømmer()
-                );
+        if (erKonkurrenceSvømmer())
+        {
+            KonkurrenceSvømmer konkurrenceSvømmer =
+                    new KonkurrenceSvømmer
+                            (
+                                    indtastNavn(),
+                                    indtastTelefonnummer(),
+                                    indtastAdresse(),
+                                    indtastEmail(),
+                                    indtastAlder(),
+                                    indtastSvømmeDisciplin(),
+                                    indtastKontingentType()
+                            );
 
-                this.medlemsListe.add(medlem);
+            this.medlemsListe.add(konkurrenceSvømmer);
 
-        System.out.println("Bruger oprettet!\n");
+        } else {
+            Medlem medlem =
+
+                    new Medlem
+                            (
+                                    indtastNavn(),
+                                    indtastTelefonnummer(),
+                                    indtastAdresse(),
+                                    indtastEmail(),
+                                    indtastAlder(),
+                                    indtastSvømmeDisciplin(),
+                                    indtastKontingentType()
+                                    //erKonkurrenceSvømmer()
+                            );
+
+            this.medlemsListe.add(medlem);
+        }
+
+        System.out.println("Medlem oprettet!\n");
     }
 
     private Boolean erKonkurrenceSvømmer()
@@ -47,7 +64,7 @@ public class MedlemsListe implements Serializable{
 
     }
 
-    public void tilføjBruger(Medlem medlem)
+    public void tilføjMedlem(Medlem medlem)
     {
         this.medlemsListe.add(medlem);
     }
@@ -90,7 +107,7 @@ public class MedlemsListe implements Serializable{
 
 
 
-    public Medlem findBruger(){
+    public Medlem findMedlem(){
         System.out.println("Indtast navn, adresse eller telefonnumer");
         String choice = input.nextLine();
         for(Medlem find : medlemsListe)
@@ -102,8 +119,8 @@ public class MedlemsListe implements Serializable{
        return null;
     }
 
-    public void redigerBruger(){
-        Medlem bruger = findBruger();
+    public void redigerMedlem(){
+        Medlem medlem = findMedlem();
         System.out.println("Hvad skal ændres?\n" +
                 "1. Navn\n" +
                 "2. Telefonnumer\n" +
@@ -118,31 +135,31 @@ public class MedlemsListe implements Serializable{
         {
             case "1":
                 System.out.println("Indtast nyt navn: ");
-                bruger.setNavn(input.nextLine());
+                medlem.setNavn(input.nextLine());
                 break;
             case "2":
                 System.out.println("Indtast nyt telefonnummer: ");
-                bruger.setTelefonNummer(input.nextLine());
+                medlem.setTelefonNummer(input.nextLine());
                 break;
             case "3":
                 System.out.println("Indtast ny adresse: ");
-                bruger.setAdresse(input.nextLine());
+                medlem.setAdresse(input.nextLine());
                 break;
             case "4":
                 System.out.println("Indtast ny email: ");
-                bruger.setEmail(input.nextLine());
+                medlem.setEmail(input.nextLine());
                 break;
             case "5":
                 System.out.println("Indtast ny alder: ");
-                bruger.setAlder(input.nextLine());
+                medlem.setAlder(input.nextLine());
                 break;
             case "6":
                 System.out.println("Indtast ny svømmedisciplin: ");
-                bruger.setSvømmeDiscipliner(SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase()));
+                medlem.setSvømmeDiscipliner(SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase()));
                 break;
             case "7":
                 System.out.println("Indtast ny kontingenttype: ");
-                bruger.setKontingentType(KontingentType.valueOf(input.nextLine().toUpperCase()));
+                medlem.setKontingentType(KontingentType.valueOf(input.nextLine().toUpperCase()));
                 break;
             default:
                 break;
@@ -151,15 +168,15 @@ public class MedlemsListe implements Serializable{
         System.out.println("Informationen er ændret\n");
     }
 
-    public void sletBruger(){
-        Medlem bruger = findBruger();
-        System.out.println("Er du sikker på at du vil slette brugeren: "+ bruger.getNavn() + " ? J/N");
+    public void sletMedlem(){
+        Medlem medlem = findMedlem();
+        System.out.println("Er du sikker på at du vil slette medlemen: "+ medlem.getNavn() + " ? J/N");
         String choice = input.nextLine();
 
         if(choice.equalsIgnoreCase("J")) //Denne har vi fundet på oracle (equalsIgnoreCase). Link: https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
         {
-            medlemsListe.remove(bruger);
-            System.out.println("Bruger slettet");
+            medlemsListe.remove(medlem);
+            System.out.println("medlem slettet");
         }
     }
 
