@@ -30,6 +30,7 @@ public class KørDelfin
 
 
         holdListe.setMedlemsListe(readFile());
+        holdListe = readFile2();
 
         System.out.println("Velkommen til Delfinen, vælg hvad du vil gøre ud fra de valgmuligheder i menuen");
 
@@ -69,6 +70,7 @@ public class KørDelfin
                     break;
                 default:
                     createStream(holdListe.medlemsListe);
+                    createStream2(holdListe);
                     System.exit(0);
                     break;
             }
@@ -126,5 +128,55 @@ public class KørDelfin
         return medlemsListe;
     }
 
+    public static void createStream2(HoldListe holdListe)
+    {
+        try
+        {
+            File file = new File("hold.txt");
+
+
+            FileOutputStream fos = new FileOutputStream(file);
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+
+            oos.writeObject(holdListe);
+
+            oos.close();
+        }
+        catch(FileNotFoundException eFNFE)
+        {
+
+            System.out.println("Error eFNFE");
+            //eFNFE.printStackTrace();
+        }
+        catch (IOException eIOE)
+        {
+            System.out.println("Error eIOE");
+            eIOE.printStackTrace();
+        }
+    }
+
+    public static HoldListe readFile2()
+    {
+        HoldListe holdliste2 = holdListe;
+        try {
+
+
+            File file = new File("hold.txt");
+
+            FileInputStream fis = new FileInputStream(file);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(bis);
+
+            holdliste2 = (HoldListe) ois.readObject();
+
+            ois.close();
+        }
+        catch (Exception e)
+        {
+            //e.printStackTrace();
+        }
+        return holdliste2;
+    }
 
 }

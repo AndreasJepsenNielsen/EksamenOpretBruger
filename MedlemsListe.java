@@ -128,7 +128,8 @@ public class MedlemsListe implements Serializable{
                 "4. Email\n" +
                 "5. Alder\n" +
                 "6. Svømmedisciplin\n" +
-                "7. Kontingenttype");
+                "7. Kontingenttype" +
+                "8. Tilbage");
         String choice = input.nextLine();
 
         switch (choice)

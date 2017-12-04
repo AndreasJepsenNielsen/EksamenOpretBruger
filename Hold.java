@@ -1,11 +1,12 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Hold {
+public class Hold implements Serializable {
 
     String holdNavn;
     ArrayList<Medlem> holdListe;
-    private Scanner input = new Scanner(System.in);
+    static private Scanner input = new Scanner(System.in);
 
     public Hold(String holdNavn)
     {
@@ -42,7 +43,7 @@ public class Hold {
     public void fjernKonkurrenceSvømmer(Medlem medlem)
     {
         this.holdListe.remove(medlem);
-        System.out.println(medlem.getNavn() + " er nu fjernet fra hold" + this.holdNavn);
+        System.out.println(medlem.getNavn() + " er nu fjernet fra hold " + this.holdNavn);
     }
 
 

@@ -1,11 +1,12 @@
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class HoldListe
+public class HoldListe implements Serializable
 {
 
     static Scanner input = new Scanner(System.in);
-    Hold rød = new Hold("rød");
-    Hold blå = new Hold("blå");
+    Hold junior = new Hold("junior");
+    Hold senior = new Hold("senior");
     MedlemsListe medlemsListe;
 
 
@@ -17,25 +18,26 @@ public class HoldListe
 
     public void redigerHold()
     {
-        System.out.println("Hold rød eller hold blå?");
+        System.out.println("Hold junior eller hold senior?");
 
         String choice2 = input.nextLine();
 
-        if (choice2.equalsIgnoreCase("rød"))
+        if (choice2.equalsIgnoreCase("junior"))
         {
-            System.out.println("Hold rød er valgt");
-            rød.redigerHold(medlemsListe);
+            System.out.println("Hold junior er valgt");
+            junior.redigerHold(medlemsListe);
         }
-        else if (choice2.equalsIgnoreCase("blå"))
+        else if (choice2.equalsIgnoreCase("senior"))
         {
-            System.out.println("Hold blå er valgt");
-            blå.redigerHold(medlemsListe);
+            System.out.println("Hold senior er valgt");
+            senior.redigerHold(medlemsListe);
         }
     }
 
     public void visHold()
     {
-        System.out.print(rød);
-        System.out.println(blå);
+        System.out.print(junior);
+        System.out.println(senior);
+
     }
 }
