@@ -39,14 +39,11 @@ public class Hold implements Serializable {
         System.out.println(medlem.getNavn() + " er blevet tilmeldt hold " + this.holdNavn);
     }
 
-
     public void fjernKonkurrenceSvømmer(Medlem medlem)
     {
         this.holdListe.remove(medlem);
         System.out.println(medlem.getNavn() + " er nu fjernet fra hold " + this.holdNavn);
     }
-
-
 
     @Override
     public String toString()

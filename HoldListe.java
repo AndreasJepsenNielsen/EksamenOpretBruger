@@ -11,7 +11,6 @@ public class HoldListe implements Serializable
 
 
 
-
     public void setMedlemsListe(MedlemsListe medlemsListe) {
         this.medlemsListe = medlemsListe;
     }

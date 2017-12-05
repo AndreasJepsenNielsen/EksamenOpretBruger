@@ -9,17 +9,13 @@ public class Medlem implements Serializable
     private String adresse;
     private String email;
     private String alder;
+    private boolean harBetalt;
     private ArrayList<SvømmeDiscipliner> svømmeDiscipliner;
     private KontingentType kontingentType;
     private ResultatListe resultatListe;
-    //private boolean erKonkurrenceSvømmer;
 
-    public Medlem()
-    {
 
-    }
-
-    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,KontingentType kontingentType /*, Boolean isKonkurrenceSvømmer*/) {
+    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder, KontingentType kontingentType, boolean harBetalt /*, Boolean isKonkurrenceSvømmer*/) {
         this.navn = navn;
         this.telefonNummer = telefonNummer;
         this.adresse = adresse;
@@ -28,25 +24,13 @@ public class Medlem implements Serializable
         this.svømmeDiscipliner = new ArrayList<>();
         this.kontingentType = kontingentType;
         this.resultatListe = new ResultatListe();
+        this.harBetalt = harBetalt;
         //this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
     }
 
     public ArrayList<SvømmeDiscipliner> getSvømmeDiscipliner() {
         return svømmeDiscipliner;
     }
-
-    public KontingentType getKontingentType() {
-        return kontingentType;
-    }
-
-    /*public boolean isErKonkurrenceSvømmer() {
-        return erKonkurrenceSvømmer;
-    }
-
-    //public void setErKonkurrenceSvømmer(boolean erKonkurrenceSvømmer) {
-        this.erKonkurrenceSvømmer = erKonkurrenceSvømmer;
-    }
-    */
 
     public String getNavn() {
         return navn;
@@ -60,18 +44,6 @@ public class Medlem implements Serializable
         return adresse;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getAlder() {
-        return alder;
-    }
-
-   /* public KontingentType getKontingentType() {
-        return kontingentType;
-    }
-*/
     public void setNavn(String navn) {
         this.navn = navn;
     }
@@ -94,10 +66,6 @@ public class Medlem implements Serializable
 
     public void setKontingentType(KontingentType kontingentType) {
         this.kontingentType = kontingentType;
-    }
-
-    public void setSvømmeDiscipliner(ArrayList svømmeDiscipliner) {
-        this.svømmeDiscipliner = svømmeDiscipliner;
     }
 
     public ResultatListe getResultatListe() {
@@ -136,5 +104,10 @@ public class Medlem implements Serializable
             index++;
         }
         this.svømmeDiscipliner.remove(index);
+    }
+
+    public boolean getHarBetalt()
+    {
+        return harBetalt;
     }
 }

@@ -1,7 +1,5 @@
-import javax.xml.transform.Result;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -27,7 +25,8 @@ public class MedlemsListe implements Serializable{
                                     indtastAdresse(),
                                     indtastEmail(),
                                     indtastAlder(),
-                                    indtastKontingentType()
+                                    indtastKontingentType(),
+                                    indtastHarBetalt()
                             );
             konkurrenceSvømmer.getSvømmeDiscipliner().add(indtastSvømmeDisciplin());
             this.medlemsListe.add(konkurrenceSvømmer);
@@ -42,8 +41,8 @@ public class MedlemsListe implements Serializable{
                                     indtastAdresse(),
                                     indtastEmail(),
                                     indtastAlder(),
-                                    indtastKontingentType()
-                                    //erKonkurrenceSvømmer()
+                                    indtastKontingentType(),
+                                    indtastHarBetalt()
                             );
             medlem.getSvømmeDiscipliner().add(indtastSvømmeDisciplin());
 
@@ -53,78 +52,16 @@ public class MedlemsListe implements Serializable{
         System.out.println("Medlem oprettet!\n");
     }
 
-    private Boolean erKonkurrenceSvømmer()
-    {
-        System.out.println("Er det nye medlem en konkurrencesvømmer?");
-        System.out.println("J/N");
-        return input.nextLine().equalsIgnoreCase("J");
-
-    }
-
-    public void tilføjMedlem(Medlem medlem)
-    {
-        this.medlemsListe.add(medlem);
-    }
-
-    //METHODS
-    public String indtastNavn() {
-        System.out.println("Navn");
-        return input.nextLine();
-    }
-
-    public String indtastTelefonnummer() {
-        System.out.println("Telefonnummer");
-        return input.nextLine();
-    }
-
-    public String indtastAdresse() {
-        System.out.println("Adresse");
-        return input.nextLine();
-    }
-
-    public String indtastEmail() {
-        System.out.println("Email");
-        return input.nextLine();
-    }
-
-    public String indtastAlder() {
-        System.out.println("Alder");
-        return input.nextLine();
-    }
-
-    public SvømmeDiscipliner indtastSvømmeDisciplin() {
-        System.out.println("Svømmedisciplin");
-
-        return SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase());
-    }
-
-    public KontingentType indtastKontingentType() {
-        System.out.println("KontingentType: ");
-        return KontingentType.valueOf(input.nextLine().toUpperCase());
-    }
-
-    public Medlem findMedlem(){
-        System.out.println("Indtast navn, adresse eller telefonnumer");
-        String choice = input.nextLine();
-        for(Medlem find : medlemsListe)
-        {
-            if(choice.equalsIgnoreCase(find.getNavn()) || choice.equalsIgnoreCase(find.getAdresse()) || choice.equalsIgnoreCase(find.getTelefonNummer())){
-                return  find;
-            }
-        }
-       return null;
-    }
-
     public void redigerMedlem(){
         Medlem medlem = findMedlem();
-        System.out.println("Hvad skal ændres?\n" +
+        System.out.println("\nHvad skal ændres?\n" +
                 "1. Navn\n" +
                 "2. Telefonnumer\n" +
                 "3. Adresse\n" +
                 "4. Email\n" +
                 "5. Alder\n" +
                 "6. Svømmedisciplin\n" +
-                "7. Kontingenttype" +
+                "7. Kontingenttype\n" +
                 "8. Tilbage");
         String choice = input.nextLine();
 
@@ -166,6 +103,112 @@ public class MedlemsListe implements Serializable{
         System.out.println("Informationen er ændret\n");
     }
 
+    public void sletMedlem(){
+        Medlem medlem = findMedlem();
+        System.out.println("Er du sikker på at du vil slette medlemmet: " + medlem.getNavn() + " ? J/N");
+        String choice = input.nextLine();
+
+        if(choice.equalsIgnoreCase("J")) //Denne har vi fundet på oracle (equalsIgnoreCase). Link: https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
+        {
+            medlemsListe.remove(medlem);
+            System.out.println("Medlem slettet\n");
+        }
+    }
+
+    private Boolean erKonkurrenceSvømmer()
+    {
+        System.out.println("Er det nye medlem en konkurrencesvømmer?");
+        System.out.println("J/N");
+        return input.nextLine().equalsIgnoreCase("J");
+
+    }
+    //METHODS
+
+    private String indtastNavn() {
+        System.out.println("Navn");
+        return input.nextLine();
+    }
+
+    private String indtastTelefonnummer() {
+        System.out.println("Telefonnummer");
+        return input.nextLine();
+    }
+
+    private String indtastAdresse() {
+        System.out.println("Adresse");
+        return input.nextLine();
+    }
+
+    private String indtastEmail() {
+        System.out.println("Email");
+        return input.nextLine();
+    }
+
+    private String indtastAlder() {
+        System.out.println("Alder");
+        return input.nextLine();
+    }
+
+    private SvømmeDiscipliner indtastSvømmeDisciplin() {
+        System.out.println("Svømmedisciplin");
+
+        return SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase());
+    }
+
+    private KontingentType indtastKontingentType() {
+        System.out.println("KontingentType: ");
+        return KontingentType.valueOf(input.nextLine().toUpperCase());
+    }
+
+    private boolean indtastHarBetalt()
+    {
+        System.out.println("Har medlemmet betalt? J for ja, alt andet nej");
+        String valg = input.nextLine().toUpperCase();
+
+        if (valg.equals("J"))
+        {
+            return true;
+        } else if (valg.equals("N")){
+            return false;
+        }
+        return false;
+
+
+    }
+
+    public Medlem findMedlem(){
+        System.out.println("\nIndtast navn, adresse eller telefonnumer");
+        String choice = input.nextLine();
+        for(Medlem find : medlemsListe)
+        {
+            if(choice.equalsIgnoreCase(find.getNavn()) || choice.equalsIgnoreCase(find.getAdresse()) || choice.equalsIgnoreCase(find.getTelefonNummer())){
+                return  find;
+            }
+        }
+       return null;
+    }
+
+    public void visRangliste()
+    {
+        ArrayList<Resultat> rangListe = new ArrayList<>();
+        SvømmeDiscipliner svømmeDiscipliner;
+
+        System.out.println("Indtast disciplin");
+        svømmeDiscipliner = SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase());
+
+        for (Medlem medlem : this.medlemsListe)
+        {
+            rangListe.add(findBedsteTid(medlem, svømmeDiscipliner));
+        }
+
+        rangListe.sort(ResultatListe::sammenlign);
+
+        for (int i = 0; i < 5; i++)
+        {
+            System.out.println(rangListe.get(i));
+        }
+    }
+
     private void redigerSvømmedisciplin(Medlem medlem)
     {
         System.out.println("1. Tilføj\n" +
@@ -190,39 +233,6 @@ public class MedlemsListe implements Serializable{
         }
     }
 
-    public void sletMedlem(){
-        Medlem medlem = findMedlem();
-        System.out.println("Er du sikker på at du vil slette medlemen: "+ medlem.getNavn() + " ? J/N");
-        String choice = input.nextLine();
-
-        if(choice.equalsIgnoreCase("J")) //Denne har vi fundet på oracle (equalsIgnoreCase). Link: https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
-        {
-            medlemsListe.remove(medlem);
-            System.out.println("medlem slettet");
-        }
-    }
-
-    public void visRangliste()
-    {
-        ArrayList<Resultat> rangListe = new ArrayList<>();
-        SvømmeDiscipliner svømmeDiscipliner;
-
-        System.out.println("Indtast disciplin");
-        svømmeDiscipliner = SvømmeDiscipliner.valueOf(input.nextLine().toUpperCase());
-
-        for (Medlem medlem : this.medlemsListe)
-        {
-            rangListe.add(findBedsteTid(medlem, svømmeDiscipliner));
-        }
-
-        rangListe.sort(ResultatListe::compare);
-
-        for (int i = 0; i < 5; i++)
-        {
-            System.out.println(rangListe.get(i));
-        }
-    }
-
     private Resultat findBedsteTid (Medlem medlem, SvømmeDiscipliner svømmeDiscipliner)
     {
         ArrayList<Resultat> resultatArrayList = new ArrayList<>();
@@ -241,11 +251,6 @@ public class MedlemsListe implements Serializable{
         return resultatArrayList.get(0);
     }
 
-    public ArrayList<Medlem> getMedlemsListe()
-    {
-        return medlemsListe;
-    }
-
     @Override
     public String toString() {
         String result = "";
@@ -255,4 +260,17 @@ public class MedlemsListe implements Serializable{
         return result;
     }
 
+    public ArrayList<Medlem> ubetaltKontigentListe()
+    {
+        ArrayList<Medlem> ubetaltKontingentListe = new ArrayList<>();
+
+        for (Medlem medlem : this.medlemsListe)
+        {
+            if (!medlem.getHarBetalt())
+            {
+                ubetaltKontingentListe.add(medlem);
+            }
+        }
+        return ubetaltKontingentListe;
+    }
 }
