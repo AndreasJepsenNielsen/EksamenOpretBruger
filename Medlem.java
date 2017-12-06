@@ -9,17 +9,13 @@ public class Medlem implements Serializable
     private String adresse;
     private String email;
     private String alder;
+    private boolean harBetalt;
     private ArrayList<SvømmeDiscipliner> svømmeDiscipliner;
     private KontingentType kontingentType;
     private ResultatListe resultatListe;
-    //private boolean erKonkurrenceSvømmer;
 
-    public Medlem()
-    {
-
-    }
-
-    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder,KontingentType kontingentType /*, Boolean isKonkurrenceSvømmer*/) {
+    //Constructor
+    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder, KontingentType kontingentType, boolean harBetalt) {
         this.navn = navn;
         this.telefonNummer = telefonNummer;
         this.adresse = adresse;
@@ -28,101 +24,85 @@ public class Medlem implements Serializable
         this.svømmeDiscipliner = new ArrayList<>();
         this.kontingentType = kontingentType;
         this.resultatListe = new ResultatListe();
-        //this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
+        this.harBetalt = harBetalt;
     }
 
+    //Getter af arraylisten som indeholder svømmediscipliner
     public ArrayList<SvømmeDiscipliner> getSvømmeDiscipliner() {
         return svømmeDiscipliner;
     }
 
-    public KontingentType getKontingentType() {
-        return kontingentType;
-    }
-
-    /*public boolean isErKonkurrenceSvømmer() {
-        return erKonkurrenceSvømmer;
-    }
-
-    //public void setErKonkurrenceSvømmer(boolean erKonkurrenceSvømmer) {
-        this.erKonkurrenceSvømmer = erKonkurrenceSvømmer;
-    }
-    */
-
+    //Getter til navnet på medlemmet
     public String getNavn() {
         return navn;
     }
 
+    //Getter til telefonnummeret på medlemmet
     public String getTelefonNummer() {
         return telefonNummer;
     }
 
+    //Getter til adressen på medlemmet
     public String getAdresse() {
         return adresse;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getAlder() {
-        return alder;
-    }
-
-   /* public KontingentType getKontingentType() {
-        return kontingentType;
-    }
-*/
-    public void setNavn(String navn) {
-        this.navn = navn;
-    }
-
-    public void setTelefonNummer(String telefonNummer) {
-        this.telefonNummer = telefonNummer;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAlder(String alder) {
-        this.alder = alder;
-    }
-
-    public void setKontingentType(KontingentType kontingentType) {
-        this.kontingentType = kontingentType;
-    }
-
-    public void setSvømmeDiscipliner(ArrayList svømmeDiscipliner) {
-        this.svømmeDiscipliner = svømmeDiscipliner;
-    }
-
+    //Getter til arraylisten resultatliste
     public ResultatListe getResultatListe() {
         return resultatListe;
     }
 
-    @Override
-    public String toString() {
-        return "\nNavn: " + navn + " " +
-                "\nTelefonNummer: " + telefonNummer + " " +
-                "\nAdresse: " + adresse + " " +
-                "\nEmail: " + email + " " +
-                "\nAlder: " + alder + " " +
-                "\nSvømmedisciplin: " + svømmeDiscipliner + " " +
-                "\nKontingenttype: " + kontingentType + " " +
-                //"\nKonkurrencesvømmer: " + erKonkurrenceSvømmer + " " +
-                "\n";
-
+    //Getter til booleanen som fortæller om medlemmet har betalt kontingent
+    public boolean getHarBetalt()
+    {
+        return harBetalt;
     }
 
+    //Setter til navnet på medlemmet
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
+    //Setter til telefonnummeret på medlemmet
+    public void setTelefonNummer(String telefonNummer) {
+        this.telefonNummer = telefonNummer;
+    }
+
+    //Setter til adressen på medlemmet
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    //Setter til emailen på medlemmet
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    //Setter til alderen på medlemmet
+    public void setAlder(String alder) {
+        this.alder = alder;
+    }
+
+    //Setter til kontingentypen som medlemmet har
+    public void setKontingentType(KontingentType kontingentType) {
+        this.kontingentType = kontingentType;
+    }
+
+    //En metode som tilføjer en svømmedisciplin til et medlem
     public void tilføjSvømmeDisciplin(SvømmeDiscipliner svømmeDiscipliner)
     {
         this.svømmeDiscipliner.add(svømmeDiscipliner);
     }
 
+    public String printSvømmeDisciplin() {
+        String result = "";
+        for (int i = 0; i < this.svømmeDiscipliner.size(); i++) {
+            result += this.svømmeDiscipliner.get(i);
+        }
+        return result;
+    }
+
+    //En metode som sletter en svømmedisciplin til et medlem
     public void sletSvømmeDisciplin (SvømmeDiscipliner svømmeDiscipliner)
     {
         int index = 0;
@@ -136,5 +116,19 @@ public class Medlem implements Serializable
             index++;
         }
         this.svømmeDiscipliner.remove(index);
+    }
+
+    //toString metode som gør at objectet medlem kan printes
+    @Override
+    public String toString() {
+        return "\nNavn: " + navn + " " +
+                "\nTelefonNummer: " + telefonNummer + " " +
+                "\nAdresse: " + adresse + " " +
+                "\nEmail: " + email + " " +
+                "\nAlder: " + alder + " " +
+                "\nSvømmedisciplin: " + printSvømmeDisciplin() + " " +
+                "\nKontingenttype: " + kontingentType + " " + " " +
+                "\n";
+
     }
 }
