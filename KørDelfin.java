@@ -80,7 +80,7 @@ public class KørDelfin
         }
     }
 
-    //Metode som kontrollere om brugern har betalt kontingent, og viser personerne hvis boolean er false
+    //Metode som kontrollere om medlemmet har betalt kontingent, og viser personerne hvis boolean er false
     private static void kontrollerKontingent()
     {
         System.out.println("Medlemmer, der mangler at betale kontingent:");

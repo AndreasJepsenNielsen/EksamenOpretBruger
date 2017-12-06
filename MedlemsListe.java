@@ -258,7 +258,7 @@ public class MedlemsListe implements Serializable{
         }
 
         resultatArrayList.add(Collections.min(medlem.getResultatListe().resultatListe));
-        resultatArrayList.sort(Resultat::compareTo);
+        resultatArrayList.sort(Resultat::compareTo); // https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html Dette har vi fundet på oracle.
 
         return resultatArrayList.get(0);
     }

@@ -15,7 +15,7 @@ public class Medlem implements Serializable
     private ResultatListe resultatListe;
 
     //Constructor
-    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder, KontingentType kontingentType, boolean harBetalt /*, Boolean isKonkurrenceSvømmer*/) {
+    public Medlem(String navn, String telefonNummer, String adresse, String email, String alder, KontingentType kontingentType, boolean harBetalt) {
         this.navn = navn;
         this.telefonNummer = telefonNummer;
         this.adresse = adresse;
@@ -25,7 +25,6 @@ public class Medlem implements Serializable
         this.kontingentType = kontingentType;
         this.resultatListe = new ResultatListe();
         this.harBetalt = harBetalt;
-        //this.erKonkurrenceSvømmer = isKonkurrenceSvømmer;
     }
 
     //Getter af arraylisten som indeholder svømmediscipliner
@@ -120,8 +119,7 @@ public class Medlem implements Serializable
                 "\nEmail: " + email + " " +
                 "\nAlder: " + alder + " " +
                 "\nSvømmedisciplin: " + svømmeDiscipliner + " " +
-                "\nKontingenttype: " + kontingentType + " " +
-                //"\nKonkurrencesvømmer: " + erKonkurrenceSvømmer + " " +
+                "\nKontingenttype: " + kontingentType + " " + " " +
                 "\n";
 
     }

@@ -9,17 +9,5 @@ public class StævneResultat extends Resultat
     {
         super(sek, navn, dato, svømmeDiscipliner);
     }
-
-    //Bliver ikke brugt
-    public void setStævne(String stævne)
-    {
-        this.stævneNavn = stævne;
-    }
-
-    //Bliver ikke brugt
-    public void setPlacering(String placering)
-    {
-        this.placering = placering;
-    }
 }
 

@@ -15,7 +15,7 @@ public class Resultat implements Comparable<Resultat>, Serializable {
         this.svømmeDiscipliner = svømmeDiscipliner;
     }
 
-    //En metode som sammenligner ....
+    //En metode som sammenligner om der er to tider som har den samme værdi.
     @Override
     public int compareTo(Resultat o) {
         if (this.sek < o.sek) {

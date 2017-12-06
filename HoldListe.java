@@ -15,7 +15,7 @@ public class HoldListe implements Serializable
         this.medlemsListe = medlemsListe;
     }
 
-    //En metode som
+    //En metode som redigere det valgte hold
     public void redigerHold()
     {
         System.out.println("Hold junior eller hold senior?");

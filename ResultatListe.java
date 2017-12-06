@@ -96,7 +96,7 @@ public class ResultatListe implements Serializable{
         return svømmeDiscipliner;
     }
 
-    //Metode som sammenligner resultaterne....
+    //Metode som sammenligner resultaterne, hvis sCompt er = 0 bliver navnene sammenlignet også.
     public static int sammenlign(Object o1, Object o2)
     {
         Integer i1 = ((Resultat) o1).getSek();
